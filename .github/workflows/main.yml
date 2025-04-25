@@ -1,0 +1,19 @@
+name: On Every Commit
+
+on:
+  push:  # This triggers the workflow on every commit to any branch
+
+jobs:
+  on-commit-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Show commit info
+        run: |
+          echo "✅ A new commit was pushed!"
+          echo "🔀 Branch: ${{ github.ref }}"
+          echo "👤 Committer: ${{ github.actor }}"
+          echo "📝 Commit Message: ${{ github.event.head_commit.message }}"
